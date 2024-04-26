@@ -10,3 +10,17 @@ describe("Command class", function() {
   });
 
 });
+
+
+// Task 2: Test 2 
+
+describe("Command class", function() {
+
+  test("constructor sets command type", function(){
+    let commandType = "Test Command";
+    let value = "Test Value";
+    let testCommand = new Command(commandType,value)
+    expect(testCommand.commandType).toEqual(commandType)
+  });
+
+});
