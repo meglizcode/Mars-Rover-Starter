@@ -12,4 +12,12 @@ describe("Message class", function() {
       expect( function() { new Message();}).toThrow(new Error("Name Required."));
     });
   
+// Test 5
+     test("constructor sets name", function(){
+      let name = "Test Name";
+      let command = "Test"
+      let testMessage = new Message("Test Name","Test")
+      expect(testMessage.name).toEqual("Test Name");
+      });
+
   });
