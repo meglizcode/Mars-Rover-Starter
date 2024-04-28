@@ -27,4 +27,5 @@ test("contains a commands array passed into the constructor as the 2nd argument 
     let testMessage = new Message(name,commands)
     expect(testMessage.commands).toEqual(commands);
     });
-  });
+
+});
