@@ -12,7 +12,15 @@ describe("Rover class", function() {
   test('constructor sets position and default values for mode and generatorWatts', function(){
     let rover2 = new Rover(98382)
     expect(rover2).toEqual({position: 98382, mode:'NORMAL', generatorWatts: 110})
-  }
-)
+  })
+
+  // Test 8
+  test('response returned by receiveMessage contains the name of the message',function(){
+  let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+  let message = new Message('Test message with two commands', commands);
+  let rover3 = new Rover(98382);
+  let response = rover3.receiveMessage(message);
+    expect(response.message).toEqual(message.name)
+  })
 
 });
