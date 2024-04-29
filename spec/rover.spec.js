@@ -25,13 +25,23 @@ describe("Rover class", function() {
 
   // Test 9
   test('response returned by receiveMessage includes two results if two commands are sent in the message',function(){
-    let commands = [new Command('MODE_CHANGE', 'NORMAL'), new Command('STATUS_CHECK')];
+    let commands = [new Command('MODE_CHANGE', 'NORMAL'), new Command('MOVE')];
     let message = new Message('Test message with two commands', commands);
     let rover4 = new Rover(98382);
     let response = rover4.receiveMessage(message);
     expect(response.results.length).toEqual(2)
-  })
+ })
+  // Test 10 
+  // test('responds correctly to the status check command', function(){
+  // let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK',)];
+  // let message = new Message('Test message with two commands', commands);
+  // let rover5 = new Rover(98382);
+  // let response = rover5.receiveMessage(message)
+  // expect(rover5).toContain({position:98382,mode:'LOW_POWER',generatorWatts:110})
 
-  // Commad.commadType = V
+
+  // })
+ 
+
 
 });

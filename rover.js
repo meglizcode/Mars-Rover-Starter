@@ -12,10 +12,18 @@ receiveMessage(message) {
     message: message.name,
     results: [],
    }
- let messageCommand = message.commands
+   
+ let messageCommand = message.commands 
+
 for(let i = 0; i < messageCommand.length; i++ )
-   if (messageCommand[i].commandType === "MODE_CHANGE")
-   response.results.push(messageCommand)
+  if (messageCommand[i].commandType === "MODE_CHANGE")
+    response.results.push(messageCommand);
+  else if (messageCommand[i].commandType === "MOVE"){
+   response.results.push(messageCommand);
+    
+  }
+
+
 
   
 console.log(response)
