@@ -23,4 +23,15 @@ describe("Rover class", function() {
     expect(response.message).toEqual(message.name)
   })
 
+  // Test 9
+  test('response returned by receiveMessage includes two results if two commands are sent in the message',function(){
+    let commands = [new Command('MODE_CHANGE', 'NORMAL'), new Command('STATUS_CHECK')];
+    let message = new Message('Test message with two commands', commands);
+    let rover4 = new Rover(98382);
+    let response = rover4.receiveMessage(message);
+    expect(response.results.length).toEqual(2)
+  })
+
+  // Commad.commadType = V
+
 });
