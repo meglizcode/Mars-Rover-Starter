@@ -17,14 +17,18 @@ receiveMessage(message) {
    
  let messageCommand = message.commands 
 
-for(let i = 0; i < messageCommand.length; i++ )
+for(let i = 0; i < messageCommand.length; i++ ){
   if (messageCommand[i].commandType === "MODE_CHANGE"){
-    response.results.push(messageCommand);}
-
-  else if (messageCommand[i].commandType === "MOVE"){
-   response.results.push(messageCommand);}
-   
-   else if (messageCommand[i].commandType === "STATUS_CHECK"){
+    this.mode = messageCommand[i].value;
+    response.results.push(true);
+  }
+  if (messageCommand[i].commandType === "MOVE"){
+   if (this.mode === 'LOW_POWER')
+   response.results.push(false)
+  else if (this.mode === 'NORMAL')
+    response.results.push(true)
+  }
+  if (messageCommand[i].commandType === "STATUS_CHECK"){
     let roverStatus = {
       position: this.position,
       mode: this.mode,
@@ -32,7 +36,10 @@ for(let i = 0; i < messageCommand.length; i++ )
     } 
     response.roverStatGlobal.push(roverStatus)
   }
-
+  if (this.mode === 'NORMAL' && messageCommand[i].commandType === "MOVE"){
+    this.position = messageCommand[i].value
+  }
+}
 
   
 console.log(response)
