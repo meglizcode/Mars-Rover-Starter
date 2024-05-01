@@ -32,15 +32,17 @@ describe("Rover class", function() {
     expect(response.results.length).toEqual(2)
  })
   // Test 10 
-  // test('responds correctly to the status check command', function(){
-  // let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK',)];
-  // let message = new Message('Test message with two commands', commands);
-  // let rover5 = new Rover(98382);
-  // let response = rover5.receiveMessage(message)
-  // expect(rover5).toContain({position:98382,mode:'LOW_POWER',generatorWatts:110})
-
-
-  // })
+  test('responds correctly to the status check command', function(){
+    let commands = [new Command('STATUS_CHECK')]
+    let message = new Message('Test message with two commands', commands);
+    let rover4 = new Rover(98382);
+    let response = rover4.receiveMessage(message);
+    expect(response.roverStatGlobal[0]).toEqual({position: 98382, mode:'NORMAL', generatorWatts: 110})
+  })
+// Test 11
+test('responds correctly to the mode change command', function(){
+  
+})
  
 
 
