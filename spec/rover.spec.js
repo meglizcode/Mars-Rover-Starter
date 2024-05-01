@@ -38,7 +38,7 @@ describe("Rover class", function() {
     let message = new Message('Test message with two commands', commands);
     let rover5 = new Rover(98382);
     let response = rover5.receiveMessage(message);
-    expect(response.roverStatGlobal[0]).toEqual({position: 98382, mode:'NORMAL', generatorWatts: 110})
+    expect(response.results[0].roverStatus).toEqual({position: 98382, mode:'NORMAL', generatorWatts: 110})
 });
 
 // Test 11
@@ -47,7 +47,7 @@ test('responds correctly to the mode change command', function(){
   let message = new Message('Checking Mode Changes', commands);
   let rover6 = new Rover(98382);
   let response = rover6.receiveMessage(message);
-  expect(response.results[0]).toEqual(true)
+  expect(response.results[0]).toEqual({completed: true})
 });
 
  // Test 12
@@ -56,7 +56,7 @@ test('responds correctly to the mode change command', function(){
   let message = new Message('Rover Does Not Move', commands);
   let rover7 = new Rover(98382);
   let response = rover7.receiveMessage(message);
-  expect(response.results[1]).toEqual(false)
+  expect(response.results[1]).toEqual({completed: false})
 });
 
 /// Test 13
